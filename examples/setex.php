@@ -1,9 +1,9 @@
 <?php
-namespace ceefee\crontab;
+require __DIR__ .'/../src/Redis.php';
 
-require __DIR__ .'/../src/RedisInstance.php';
+use ceefee\crontab\Redis;
 
-$redis = new RedisInstance();
+$redis = Redis::getInstance();
 $redis->connect();
 $redis->setex('crontab:123:456', 100);
 $redis->close();

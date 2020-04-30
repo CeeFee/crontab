@@ -1,11 +1,11 @@
 <?php
-namespace ceefee\crontab;
+require __DIR__ .'/../src/Redis.php';
 
-require __DIR__ .'/../src/RedisInstance.php';
+use ceefee\crontab\Redis;
 
 echo "订阅消息监听\n";
 
-$redis = new RedisInstance();
+$redis = Redis::getInstance();
 $redis->connect();
 $redis->psubscribe(0, function($redis, $pattern, $channel, $msg) {
     echo "Pattern: {$pattern}\n";
