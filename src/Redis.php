@@ -45,8 +45,7 @@ class Redis
     
     public function setex($keyName, $timeout, $value = null)
     {
-        self::setNotifyKeyspaceEvents();
-        self::$_redis->setex($keyName, $timeout, $value);
+        self::setNotifyKeyspaceEvents()->setex($keyName, $timeout, $value);
         
         return self::$_instance;
     }
@@ -64,8 +63,7 @@ class Redis
             $patterns[] = sprintf($pattern, $database);
         }
         
-        self::setOption();
-        self::$_redis->psubscribe($patterns, $callback);
+        self::setOption()->psubscribe($patterns, $callback);
         
         return self::$_instance;
     }
@@ -73,11 +71,15 @@ class Redis
     protected static function setOption()
     {
         self::$_redis->setOption(\Redis::OPT_READ_TIMEOUT, -1);
+        
+        return self::$_redis;
     }
     
     protected static function setNotifyKeyspaceEvents()
     {
         self::$_redis->config('SET', 'notify-keyspace-events', 'Ex');
+        
+        return self::$_redis;
     }
     
     protected function checkEnvironment()
