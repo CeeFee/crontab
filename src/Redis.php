@@ -8,7 +8,7 @@ class Redis
     
     private function __construct()
     {
-        self::checkEnvironment();
+        $this->checkEnvironment();
     }
     
     private function __clone() {}
@@ -21,29 +21,37 @@ class Redis
         return self::$_instance;
     }
     
-    public static function setRedis($redis)
+    public function setRedis($redis)
     {
         self::$_redis = $redis;
+        
+        return self::$_instance;
     }
     
-    public static function connect($server = '127.0.0.1', $port = 6379)
+    public function connect($server = '127.0.0.1', $port = 6379)
     {
         self::$_redis = new \Redis();
         self::$_redis->connect($server, $port);
+        
+        return self::$_instance;
     }
     
-    public static function close()
+    public function close()
     {
         self::$_redis->close();
+        
+        return self::$_instance;
     }
     
-    public static function setex($keyName, $timeout, $value = null)
+    public function setex($keyName, $timeout, $value = null)
     {
         self::setNotifyKeyspaceEvents();
         self::$_redis->setex($keyName, $timeout, $value);
+        
+        return self::$_instance;
     }
     
-    public static function psubscribe($database, $callback)
+    public function psubscribe($database, $callback)
     {
         $pattern = '__keyevent@%s__:expired';
         $patterns = [];
@@ -58,6 +66,8 @@ class Redis
         
         self::setOption();
         self::$_redis->psubscribe($patterns, $callback);
+        
+        return self::$_instance;
     }
     
     protected static function setOption()
@@ -70,7 +80,7 @@ class Redis
         self::$_redis->config('SET', 'notify-keyspace-events', 'Ex');
     }
     
-    protected static function checkEnvironment()
+    protected function checkEnvironment()
     {
         if (!extension_loaded('redis')) {
             throw new \Exception('Redis extension not loaded');
