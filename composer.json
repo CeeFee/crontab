@@ -2,7 +2,7 @@
     "name": "ceefee/crontab",
     "description": "Redis Crontab",
     "keywords": ["ceefee", "redis", "crontab"],
-    "type": "yii2-extension",
+    "type": "library",
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/ceefee/crontab/issues",
@@ -14,6 +14,10 @@
             "email": "chengfei.net@gmail.com"
         }
     ],
+	"require": {
+		"php": ">=7.0",
+		"ext-redis": ">= 2.8.0"
+	},
     "repositories": [
         {
             "type": "composer",
