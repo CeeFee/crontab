@@ -1,0 +1,23 @@
+{
+    "name": "ceefee/crontab",
+    "description": "Redis Crontab",
+    "keywords": ["ceefee", "redis", "crontab"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/ceefee/crontab/issues",
+        "source": "https://github.com/ceefee/crontab"
+    },
+    "authors": [
+        {
+            "name": "CeeFee",
+            "email": "chengfei.net@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
