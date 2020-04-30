@@ -18,6 +18,9 @@
 		"php": ">=7.0",
 		"ext-redis": ">= 2.8.0"
 	},
+	"autoload": {
+        "psr-4": { "ceefee\\crontab\\": "src" }
+    },
     "repositories": [
         {
             "type": "composer",

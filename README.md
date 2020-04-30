@@ -6,6 +6,11 @@
     <br>
 </p>
 
+
+
+[![Latest Stable Version](https://poser.pugx.org/ceefee/crontab/v/stable.png)](https://packagist.org/packages/ceefee/crontab)
+[![Total Downloads](https://poser.pugx.org/ceefee/crontab/downloads.png)](https://packagist.org/packages/ceefee/crontab)
+
 Requirements
 ------------
 
